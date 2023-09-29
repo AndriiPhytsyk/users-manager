@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+<body>
+<div ng-controller="myController">
+    <div class="content__actions">
+        <a ng-click="createUser()" class="btn btn-primary">Create User</a>
+    </div>
+    <div class="content">
+        <table class="table">
+            <tr class="table__header">
+                <th ng-repeat="header in tableHeaders">{{header.toUpperCase()}}</th>
+            </tr>
+            <tr ng-repeat="user in users" class="table__row">
+                <td>{{user.userName}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.type}}</td>
+            </tr>
+        </table>
+        <user-form></user-form>
+    </div>
+
+</div>
+
+<!-- Include AngularJS library -->
+<script src="node_modules/angular/angular.js"></script>
+
+<!-- Include your custom JavaScript file -->
+<script src="app/app.js"></script>
+<script src="app/directives/userForm.js"></script>
+<script src="app/services/userService.js"></script>
+</body>
+</html>
