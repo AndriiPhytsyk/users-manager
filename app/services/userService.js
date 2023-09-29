@@ -1,4 +1,4 @@
-app.service('usersService', function() {
+app.service('usersService', function () {
     this.users = [
         {
             userName: 'user1',
@@ -70,13 +70,17 @@ app.service('usersService', function() {
             email: 'liam.wilson@example.com',
             type: 'User'
         }
-    ]; // Example data property
+    ];
 
 
-
-    this.getUsers = function() {
+    this.getUsers = function () {
         return this.users;
     };
+
+    this.addUser = function (user) {
+        this.users.push(user);
+        console.log(this.users);
+    }
 
 
 });

@@ -1,28 +1,35 @@
-app.directive('userForm', function() {
+app.directive('userForm', function(usersService) {
     return {
         restrict: 'E',
-        templateUrl: 'app/templates/userForm.html', // Template URL for your component
-        // scope: {
-        //     // Define component inputs (bindings) using scope
-        //     title: '@', // Text binding
-        //     items: '=' // Two-way binding (for passing data)
-        // },
+        templateUrl: 'app/templates/userForm.html',
         controller: function($scope) {
             $scope.userData = {
-                userName: 'user1',
-                firstName: 'John',
-                lastName: 'Doe',
-                email: 'john.doe@example.com',
-                type: 'User',
-                password: '123',
-                repeatPassword: '123'
+                userName: '',
+                firstName: '',
+                lastName: '',
+                email: '',
+                type: '',
+                password: '',
+                repeatPassword: ''
                 // Add more form fields here
             };
 
-            $scope.submitForm = function () {
-                console.log($scope.userForm);
-                console.log($scope.userForm);
+            $scope.submitted = false;
 
+            function resetForm() {
+                for (let key in $scope.userData) {
+                    $scope.userData[key] = '';
+                }
+            }
+
+
+
+            $scope.submitForm = function () {
+                $scope.submitted = true;
+                if (!$scope.userForm.valid) return;
+                usersService.addUser({...$scope.userData});
+                resetForm();
+                $scope.submitted = false;
             }
         }
     };

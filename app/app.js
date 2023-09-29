@@ -12,7 +12,7 @@ app.controller("myController", function ($scope, usersService) {
     };
 
     $scope.tableHeaders = ['username', 'first name', 'last name', 'email', 'type'];
-    $scope.users = usersData;
+    $scope.users = usersService.users;
 });
 
 

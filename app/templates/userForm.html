@@ -1,65 +1,92 @@
 <div class="user-form">
-  <div class="user-form__header">
-    <h3>Matthew Perry</h3>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <defs>
-        <style>.a {
-          fill: #a4a4b5;
-        }
+    <div class="user-form__header">
+        <h3>Matthew Perry</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <defs>
+                <style>.a {
+                    fill: #a4a4b5;
+                }
 
-        .b {
-          fill: none;
-        }</style>
-      </defs>
-      <path class="a"
-            d="M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z"/>
-      <path class="b" d="M0,0H24V24H0Z"/>
-    </svg>
-  </div>
-  <div class="user-form__content">
-    <form name="userForm">
-      <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="userName" ng-model="userData.userName" required>
-      </div>
+                .b {
+                    fill: none;
+                }</style>
+            </defs>
+            <path class="a"
+                  d="M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z"/>
+            <path class="b" d="M0,0H24V24H0Z"/>
+        </svg>
+    </div>
+    <div class="user-form__content">
+        <form name="userForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="userName" ng-model="userData.userName" required unique-validator
+                       users="usersService.users">
+                <div ng-show="userForm.userName.$error && submitted" class="form-group__error">
+                    <span ng-show="userForm.userName.$error.uniqueValidator">Username should be unique</span>
+                    <span ng-show="userForm.userName.$error.required">User Name is required</span>
+                </div>
+            </div>
 
-      <div class="form-group">
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" ng-model="userData.firstName" required>
-      </div>
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" ng-model="userData.firstName" required>
+                <div ng-show="userForm.firstName.$error && submitted" class="form-group__error">
+                    <span ng-show="userForm.userName.$error.required">First Name is required</span>
+                </div>
+            </div>
 
-      <div class="form-group">
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" ng-model="userData.lastName" required>
-      </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" ng-model="userData.lastName" required>
+                <div ng-show="userForm.lastName.$error && submitted" class="form-group__error">
+                    <span ng-show="userForm.lastName.$error.required">Last Name is required</span>
+                </div>
+            </div>
 
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" ng-model="userData.email" required>
-      </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" ng-model="userData.email" required>
+                <div ng-show="userForm.email.$error && submitted" class="form-group__error">
+                    <span ng-show="userForm.email.$error.required">Email is required</span>
+                </div>
+            </div>
 
-      <div class="form-group">
-        <label for="userType">User Type:</label>
-        <select id="userType" name="type" ng-model="userData.type" required>
-          <option value="User">User</option>
-          <option value="Admin">Admin</option>
-        </select>
-      </div>
+            <div class="form-group">
+                <label for="userType">User Type:</label>
+                <select id="userType" name="type" ng-model="userData.type" required>
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                </select>
+                <div ng-show="userForm.type.$error && submitted" class="form-group__error">
+                    <span ng-show="userForm.type.$error.required">Type is required</span>
+                </div>
+            </div>
 
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" ng-model="userData.password" required>
-      </div>
+            <div password-match-validation ng-model="userForm.password" confirm-password="userForm.repeatPassword">
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" ng-model="userData.password" required>
+                    <div ng-show="userForm.password.$error && submitted" class="form-group__error">
+                        <span ng-show="userForm.password.$error.required">Password is required</span>
+                    </div>
+                </div>
 
-      <div class="form-group">
-        <label for="repeatPassword">Repeat Password:</label>
-        <input type="password" id="repeatPassword" name="repeatPassword" ng-model="userData.repeatPassword" required>
-      </div>
+                <div class="form-group">
+                    <label for="repeatPassword">Repeat Password:</label>
+                    <input type="password" id="repeatPassword" name="repeatPassword" ng-model="userData.repeatPassword"
+                           passwords-equal="userForm.password" required>
+                    <div ng-show="userForm.repeatPassword.$error && submitted" class="form-group__error">
+                        <span ng-show="userForm.repeatPassword.$error.passwordsEqual">Passwords do not match.</span>
+                    </div>
+                </div>
+            </div>
 
-      <div class="user-form__actions">
-        <a class="btn btn-danger">Delete</a>
-        <a class="btn btn-primary" ng-click="submitForm()">Save</a>
-      </div>
-    </form>
-  </div>
+
+            <div class="user-form__actions">
+                <a class="btn btn-danger">Delete</a>
+                <a class="btn btn-primary" ng-click="submitForm()">Save</a>
+            </div>
+        </form>
+    </div>
 </div>

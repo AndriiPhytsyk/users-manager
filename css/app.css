@@ -67,7 +67,6 @@ body {
 }
 
 
-
 .user-form {
     padding: 30px 25px 25px 25px;
     background-color: #fff;
@@ -90,6 +89,11 @@ body {
 
 .form-group {
     margin-bottom: 15px;
+}
+
+.form-group .form-group__error  {
+    font-size: 14px;
+    color: #ef7da0;
 }
 
 .form-group label {
