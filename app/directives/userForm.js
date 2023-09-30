@@ -21,6 +21,7 @@ app.directive('userForm', function (usersService, NotificationService) {
                 repeatPassword: 'qwe'
             };
 
+
             $scope.$watch('selectedUser', function () {
                 $scope.userData = $scope.selectedUser || emptyUser;
             });

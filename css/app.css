@@ -16,23 +16,32 @@ body {
     justify-content: space-between;
     padding-left: 45px;
     padding-right: 45px;
+    margin-top: 150px;
+}
+
+.content .content__left {
+    margin-right: 25px;
+    max-width: 1220px;
+    flex-grow: 1;
 }
 
 .content__actions {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 15px;
-    margin-top: 150px;
-    max-width: 1045px;
+}
+
+.table-wrapper {
+    padding-bottom: 37px;
+    background-color: #fff;
 }
 
 .table {
-    max-width: 1220px;
     border: none;
     font-size: 13px;
     border-collapse: collapse;
-    margin-right: 25px;
     flex-grow: 1;
+    width: 100%;
 }
 
 .table__header {
@@ -74,8 +83,9 @@ body {
     padding: 30px 25px 25px 25px;
     background-color: #fff;
     max-width: 600px;
-    min-width: 450px;
+    min-width: 400px;
     flex-grow: 1;
+    margin-top: 71px;
 }
 
 .user-form__header {

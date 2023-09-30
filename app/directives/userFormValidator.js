@@ -1,13 +1,17 @@
 app.directive('uniqueValidator', function (usersService) {
+
     function checkUniqueness(value, users) {
         return !users.some(user => user.userName === value);
     }
 
     return {
         require: 'ngModel',
+        scope: {
+            mode: '=?'
+        },
         link: function (scope, element, attrs, ngModelCtrl) {
             ngModelCtrl.$validators.uniqueValidator = function (modelValue, viewValue) {
-                return checkUniqueness(modelValue || viewValue, usersService.users);
+                return scope.mode || checkUniqueness(modelValue || viewValue, usersService.users);
             };
         }
     };
