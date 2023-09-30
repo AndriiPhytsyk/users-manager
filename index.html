@@ -2,7 +2,8 @@
 <html ng-app="myApp" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>AngularJS App</title>
+    <title>Users manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
@@ -26,7 +27,9 @@
                 <td>{{user.type}}</td>
             </tr>
         </table>
-        <user-form ng-show="mode.create || mode.edit" mode="mode" selected-user="selectedUser"></user-form>
+        <div class="flex-1">
+            <user-form ng-show="mode.create || mode.edit" mode="mode" selected-user="selectedUser"></user-form>
+        </div>
     </div>
 
 </div>

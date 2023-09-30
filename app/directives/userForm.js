@@ -42,10 +42,20 @@ app.directive('userForm', function (usersService, NotificationService) {
                 } else {
                     usersService.editUser({...$scope.userData});
                 }
-
-                NotificationService.addNotification('danger', 'User successfully created')
-
+                NotificationService.addNotification('success', `User successfully ${actionType === 'create' ? 'created': 'updated'}`);
                 $scope.submitted = false;
+            }
+
+            $scope.deleteUser = function () {
+                usersService.deleteUser($scope.selectedUser.id);
+                NotificationService.addNotification('danger', 'User successfully deleted');
+                $scope.selectedUser = null;
+                $scope.mode.edit = false;
+            }
+
+            $scope.closeForm = function () {
+                this.mode.edit = false;
+                this.mode.create = false;
             }
         }
     };

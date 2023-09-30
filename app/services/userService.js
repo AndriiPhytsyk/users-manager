@@ -92,5 +92,10 @@ app.service('usersService', function () {
         this.users[index] = user;
     }
 
+    this.deleteUser = function(id) {
+        const index = this.users.findIndex(u => u.id === id);
+        this.users.splice(index, 1);
+    }
+
 
 });
