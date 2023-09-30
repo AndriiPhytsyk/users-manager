@@ -32,7 +32,7 @@
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" name="firstName" ng-model="userData.firstName" required>
                 <div ng-show="userForm.firstName.$error && submitted" class="form-group__error">
-                    <span ng-show="userForm.userName.$error.required">First Name is required</span>
+                    <span ng-show="userForm.firstName.$error.required">First Name is required</span>
                 </div>
             </div>
 
@@ -83,9 +83,11 @@
             </div>
 
 
-            <div class="user-form__actions">
-                <a class="btn btn-danger">Delete</a>
-                <a class="btn btn-primary" ng-click="submitForm()">Save</a>
+            <div class="user-form__actions"
+                 ng-style="mode.edit ? {'justify-content': 'space-between'} : {'justify-content': 'center'}">
+                <a ng-show="mode.edit" class="btn btn-danger">Delete</a>
+                <a ng-show="mode.edit" class="btn btn-primary"  ng-click="submitForm('edit')">Save</a>
+                <a ng-show="mode.create" class="btn btn-primary" ng-click="submitForm('create')">Create</a>
             </div>
         </form>
     </div>

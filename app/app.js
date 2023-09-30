@@ -4,11 +4,24 @@ const app = angular.module("myApp", []);
 // Define a controller for your module
 app.controller("myController", function ($scope, usersService) {
 
-    const usersData = usersService.getUsers();
+    $scope.mode = {
+        edit: false,
+        create: false
+    }
+
+    $scope.selectedUser = null;
+
+    $scope.selectUser = function (user) {
+        $scope.mode.edit = true;
+        $scope.mode.create = false;
+        $scope.selectedUser = {...user};
+
+    }
 
     $scope.createUser = function () {
-        console.log('create user');
-        alert('user clicked')
+        this.selectedUser = null;
+        $scope.mode.create = !$scope.mode.create;
+        $scope.mode.edit = false;
     };
 
     $scope.tableHeaders = ['username', 'first name', 'last name', 'email', 'type'];

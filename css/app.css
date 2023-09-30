@@ -144,3 +144,26 @@ select {
     background-color: #2e8ff0;
 }
 
+/*notifications*/
+.notification {
+    position: fixed;
+    width: 280px;
+    height: 55px;
+    border-radius: 6px;
+    color: #fff;
+    text-align: start;
+    line-height: 55px;
+    padding-left: 25px;
+}
+
+.notification-success {
+    top: 55px;
+    right: 45px;
+    background-color: #66BB6A;
+}
+
+.notification-danger {
+    top: 45px;
+    left: 55px;
+    background-color: #ef7da0;
+}

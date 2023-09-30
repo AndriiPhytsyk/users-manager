@@ -1,18 +1,29 @@
-app.directive('userForm', function(usersService) {
+app.directive('userForm', function (usersService, NotificationService) {
     return {
         restrict: 'E',
         templateUrl: 'app/templates/userForm.html',
-        controller: function($scope) {
-            $scope.userData = {
-                userName: '',
-                firstName: '',
-                lastName: '',
-                email: '',
-                type: '',
-                password: '',
-                repeatPassword: ''
-                // Add more form fields here
+        scope: {
+            mode: '=?', // Use = for two-way binding (object)
+            selectedUser: '=?'
+        },
+        link: function (scope) {
+
+        },
+        controller: function ($scope) {
+
+            const emptyUser = {
+                userName: 'qwe',
+                firstName: 'qwe',
+                lastName: 'qwe',
+                email: 'qwe@gmail.com',
+                type: 'User',
+                password: 'qwe',
+                repeatPassword: 'qwe'
             };
+
+            $scope.$watch('selectedUser', function () {
+                $scope.userData = $scope.selectedUser || emptyUser;
+            });
 
             $scope.submitted = false;
 
@@ -22,13 +33,18 @@ app.directive('userForm', function(usersService) {
                 }
             }
 
-
-
-            $scope.submitForm = function () {
+            $scope.submitForm = function (actionType) {
                 $scope.submitted = true;
-                if (!$scope.userForm.valid) return;
-                usersService.addUser({...$scope.userData});
-                resetForm();
+                if (!$scope.userForm.$valid) return;
+                if (actionType === 'create') {
+                    usersService.addUser({...$scope.userData});
+                    resetForm();
+                } else {
+                    usersService.editUser({...$scope.userData});
+                }
+
+                NotificationService.addNotification('danger', 'User successfully created')
+
                 $scope.submitted = false;
             }
         }
