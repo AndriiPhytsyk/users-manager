@@ -106,6 +106,21 @@ body {
     margin-bottom: 15px;
 }
 
+.form-group .email-input-container {
+    position: relative;
+}
+
+.form-group .email-input-container .icon {
+    position: absolute;
+    top: 50%; /* Adjust vertical positioning as needed */
+    left: 10px; /* Adjust horizontal positioning as needed */
+    transform: translateY(-50%);
+    background-image: url('../app/assets/email.png');
+    width: 20px; /* Adjust icon size as needed */
+    height: 20px; /* Adjust icon size as needed */
+    background-size: cover; /* Scale the icon to fit */
+}
+
 .form-group .form-group__error  {
     font-size: 14px;
     color: #ef7da0;
@@ -127,6 +142,10 @@ select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.form-group input[type="email"] {
+    padding-left: 45px;
 }
 
 .form-group select {

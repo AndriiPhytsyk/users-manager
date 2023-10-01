@@ -48,8 +48,11 @@
 
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input ng-pattern="'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'" type="email" id="email"
-                       name="email" ng-model="userData.email" required>
+                <div class="email-input-container">
+                    <input ng-pattern="'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'" type="email" id="email"
+                           name="email" ng-model="userData.email" required>
+                    <div class="icon"></div>
+                </div>
                 <div ng-show="userForm.email.$error && submitted" class="form-group__error">
                     <span ng-show="userForm.email.$error.required">Email is required</span>
                     <span ng-show="userForm.email.$error.pattern">Please enter valid email</span>
@@ -67,11 +70,12 @@
                 </div>
             </div>
 
-            <div password-match-validation ng-model="userForm.password" confirm-password="userForm.repeatPassword">
+            <div>
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" ng-model="userData.password" minlength="8"
-                            required>
+                           ng-pattern="'[^\w\d]*(([0-9]+.*[A-Za-z]+.*)|[A-Za-z]+.*([0-9]+.*))'" required>
+
                     <div ng-show="userForm.password.$error && submitted" class="form-group__error">
                         <span ng-show="userForm.password.$error.required">Password is required</span>
                         <span ng-show="userForm.password.$error.minlength">Minimum 8 characters</span>

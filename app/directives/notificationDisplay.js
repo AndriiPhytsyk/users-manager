@@ -1,4 +1,4 @@
-app.directive('notificationDisplay', function (NotificationService) {
+app.directive('notificationDisplay', function (notificationService) {
     return {
         restrict: 'E',
         templateUrl: 'app/templates/notifications.html',
@@ -6,9 +6,9 @@ app.directive('notificationDisplay', function (NotificationService) {
             scope.getClass = function (type) {
                 return type === 'success' ? 'notification-success' : 'notification-danger'
             }
-            scope.notifications = NotificationService.getNotifications();
+            scope.notifications = notificationService.getNotifications();
             scope.$on('notificationAdded', function () {
-                scope.notifications = NotificationService.getNotifications();
+                scope.notifications = notificationService.getNotifications();
             });
         }
     };

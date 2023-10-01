@@ -1,4 +1,4 @@
-app.service('NotificationService', function ($rootScope, $timeout) {
+app.service('notificationService', function ($rootScope, $timeout) {
         const notifications = [];
 
         function addNotification(type, message) {
