@@ -6,7 +6,9 @@ app.service('usersService', function () {
             lastName: 'Doe',
             email: 'john.doe@example.com',
             type: 'User',
-            id: 1
+            id: 1,
+            password: '12345678a',
+            repeatPassword: '12345678a'
         },
         {
             userName: 'user2',
@@ -14,7 +16,9 @@ app.service('usersService', function () {
             lastName: 'Smith',
             email: 'jane.smith@example.com',
             type: 'Admin',
-            id: 2
+            id: 2,
+            password: '12345678a',
+            repeatPassword: '12345678a'
         },
         {
             userName: 'user3',
@@ -22,7 +26,9 @@ app.service('usersService', function () {
             lastName: 'Johnson',
             email: 'alice.johnson@example.com',
             type: 'User',
-            id: 3
+            id: 3,
+            password: '12345678a',
+            repeatPassword: '12345678a'
         },
         {
             userName: 'user4',
@@ -30,7 +36,9 @@ app.service('usersService', function () {
             lastName: 'Wilson',
             email: 'bob.wilson@example.com',
             type: 'User',
-            id: 4
+            id: 4,
+            password: '12345678a',
+            repeatPassword: '12345678a'
         },
         {
             userName: 'user5',
@@ -38,7 +46,9 @@ app.service('usersService', function () {
             lastName: 'Davis',
             email: 'ella.davis@example.com',
             type: 'Admin',
-            id: 5
+            id: 5,
+            password: '12345678a',
+            repeatPassword: '12345678a'
         },
         {
             userName: 'user6',
@@ -46,7 +56,9 @@ app.service('usersService', function () {
             lastName: 'Lee',
             email: 'david.lee@example.com',
             type: 'User',
-            id: 6
+            id: 6,
+            password: '12345678a',
+            repeatPassword: '12345678a'
         },
         {
             userName: 'user7',
@@ -54,7 +66,9 @@ app.service('usersService', function () {
             lastName: 'Brown',
             email: 'grace.brown@example.com',
             type: 'User',
-            id: 7
+            id: 7,
+            password: '12345678a',
+            repeatPassword: '12345678a'
         },
         {
             userName: 'user8',
@@ -62,7 +76,9 @@ app.service('usersService', function () {
             lastName: 'Johnson',
             email: 'sam.johnson@example.com',
             type: 'Admin',
-            id: 8
+            id: 8,
+            password: '12345678a',
+            repeatPassword: '12345678a'
         },
         {
             userName: 'user9',
@@ -70,7 +86,9 @@ app.service('usersService', function () {
             lastName: 'Smith',
             email: 'olivia.smith@example.com',
             type: 'User',
-            id: 9
+            id: 9,
+            password: '12345678a',
+            repeatPassword: '12345678a'
         },
         {
             userName: 'user10',
@@ -78,13 +96,15 @@ app.service('usersService', function () {
             lastName: 'Wilson',
             email: 'liam.wilson@example.com',
             type: 'User',
-            id: 10
+            id: 10,
+            password: '12345678a',
+            repeatPassword: '12345678a'
         }
     ];
 
 
     this.addUser = function (user) {
-        this.users.push(user);
+        this.users.push({...user, id: this.users.length + 1});
     }
 
     this.editUser = function (user) {

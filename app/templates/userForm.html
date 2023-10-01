@@ -22,8 +22,8 @@
         <form name="userForm">
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="userName" ng-model="userData.userName" required unique-validator mode="mode.edit"
-                       users="usersService.users">
+                <input type="text" id="username" name="userName" ng-model="userData.userName" required unique-validator
+                       isEditMode="mode.edit">
                 <div ng-show="userForm.userName.$error && submitted" class="form-group__error">
                     <span ng-show="userForm.userName.$error.uniqueValidator">Username should be unique</span>
                     <span ng-show="userForm.userName.$error.required">User Name is required</span>
