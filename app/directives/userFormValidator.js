@@ -4,11 +4,11 @@ app.directive('uniqueValidator', function (usersService) {
         return !users.some(user => user.userName === value);
     }
 
-    function checkIfSameUser(users, user) {
-        const copy = {...users};
+    function checkIfSameUser(value, user) {
+        const copy = [...usersService.users];
         const index = copy.findIndex(u => u.id === user.id);
         copy.splice(index, 1);
-        return copy.find(u => u.userName === user.userName);
+        return copy.find(u => u.userName === value);
     }
 
     return {
@@ -19,7 +19,7 @@ app.directive('uniqueValidator', function (usersService) {
         },
         link: function (scope, element, attrs, ngModelCtrl) {
             ngModelCtrl.$validators.uniqueValidator = function (modelValue, viewValue) {
-                return (scope.isEditMode && checkIfSameUser(usersService.users, user) ) || checkUniqueness(modelValue || viewValue, usersService.users);
+                return (scope.isEditMode && !checkIfSameUser(modelValue || viewValue, scope.user) ) || checkUniqueness(modelValue || viewValue, usersService.users);
             };
         }
     };
